@@ -3,8 +3,20 @@ import plotly.express as px
 from dash import Dash, dcc, html, Input, Output, dash_table, callback
 import dash_bootstrap_components as dbc
 
+# Mettre un mot de passe
+from dash_auth import BasicAuth
+VALID_USERNAME_PASSWORD_PAIRS = {
+    'admin': 'admin',
+    'user': 'user'
+}
+
+
+
+
 # Initialize the app
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+BasicAuth(app, VALID_USERNAME_PASSWORD_PAIRS)
+
 server = app.server # pour déployer l'application sur un serveur
 
 # Load data
